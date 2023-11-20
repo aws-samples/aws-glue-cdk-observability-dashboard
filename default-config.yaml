@@ -1,0 +1,19 @@
+create_s3_stack: true
+create_metrics_sender_stack: true
+create_catalog_stack: true
+create_quicksight_stack: true
+
+s3_bucket_name: glue-observability-demo-dashboard
+
+firehose_log_group_name: /aws/kinesisfirehose/observability-demo-metric-stream
+firehose_lambda_buffer_size_mb: 2
+firehose_lambda_buffer_interval_seconds: 60
+firehose_s3_buffer_size_mb: 128
+firehose_s3_buffer_interval_seconds: 300
+
+glue_database_name: 00_observability_demo_db
+glue_table_name: metric_data
+glue_crawler_name: observability_demo_crawler
+glue_crawler_cron_schedule: "cron(42 * * * ? *)"
+
+athena_workgroup_name: primary
